@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>antelope-parent</artifactId>
+        <groupId>cn.youngh</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../antelope-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>antelope-manager</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>antelope-manager-pojo</module>
+        <module>antelope-manager-dao</module>
+        <module>antelope-manager-interface</module>
+        <module>antelope-manager-service</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>cn.youngh</groupId>
+            <artifactId>antelope-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <port>8080</port>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
