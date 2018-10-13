@@ -49,6 +49,8 @@ public class ItemServiceImpl implements ItemService {
         item.setId(id);
         //商品状态，1-正常，2-下架，3-删除
         item.setStatus((byte)1);
+        item.setCreated(date);
+        item.setUpdated(date);
         itemMapper.insert(item);
         TbItemDesc itemDesc = new TbItemDesc();
         itemDesc.setItemId(id);

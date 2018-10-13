@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="cn.youngh.antelope.search"/>
+    <bean id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+        <constructor-arg name="baseURL" value="http://127.0.0.1:8180/solr/"/>
+    </bean>
+
+    <dubbo:application name="antelope-search"/>
+    <!--dubbo服务注册中心的地址-->
+    <dubbo:registry protocol="zookeeper" address="115.159.68.198:2181"/>
+     <!--dubbo服务的端口-->
+    <dubbo:protocol name="dubbo" port="20882"/>
+    <!--暴露服务的接口-->
+    <dubbo:service interface="cn.youngh.antelope.search.service.SearchItemService" ref="searchItemServiceImpl" timeout="300000"/>
+    <dubbo:service interface="cn.youngh.antelope.search.service.SearchService" ref="searchServiceImpl" timeout="300000"/>
+
+</beans>

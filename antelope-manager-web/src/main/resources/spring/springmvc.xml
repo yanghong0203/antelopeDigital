@@ -12,8 +12,7 @@
 	<context:component-scan base-package="cn.youngh.antelope.controller" />
 	<mvc:annotation-driven />
 	<context:property-placeholder location="classpath:conf/resource.properties"/>
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
@@ -32,4 +31,6 @@
 	<dubbo:reference interface="cn.youngh.antelope.service.ItemCatService" id="itemCatService"/>
 	<dubbo:reference interface="cn.youngh.antelope.content.service.ContentCategoryService" id="contentCategoryService"/>
 	<dubbo:reference interface="cn.youngh.antelope.content.service.ContentService" id="contentService"/>
+	<dubbo:reference interface="cn.youngh.antelope.search.service.SearchItemService" id="searchItemService"/>
+
 </beans>
